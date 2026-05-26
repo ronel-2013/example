@@ -1,337 +1,47 @@
+<!--
+FULL PROJECT STRUCTURE
+
+index.html
+style.css
+script.js
+
+HOST ON GITHUB PAGES:
+1. Create a GitHub repository
+2. Upload these 3 files
+3. Settings → Pages
+4. Deploy from main branch
+-->
+
+<!-- ===================================================== -->
+<!-- ==================== index.html ===================== -->
+<!-- ===================================================== -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>NovaPlay Arcade</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<style>
+<link rel="stylesheet" href="style.css">
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-body{
-  font-family:'Poppins',sans-serif;
-  background:#0b1020;
-  color:white;
-}
-
-nav{
-  background:#111827;
-  padding:18px 8%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  position:sticky;
-  top:0;
-  z-index:999;
-}
-
-.logo{
-  font-size:28px;
-  font-weight:700;
-  color:#38bdf8;
-}
-
-.nav-right{
-  display:flex;
-  align-items:center;
-  gap:15px;
-}
-
-.user-box{
-  background:#1f2937;
-  padding:10px 15px;
-  border-radius:8px;
-}
-
-.login-btn{
-  background:#38bdf8;
-  color:black;
-  border:none;
-  padding:10px 18px;
-  border-radius:8px;
-  cursor:pointer;
-  font-weight:600;
-}
-
-.hero{
-  min-height:60vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  background:
-  linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
-  url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop');
-  background-size:cover;
-  background-position:center;
-  padding:40px;
-}
-
-.hero h1{
-  font-size:60px;
-  margin-bottom:20px;
-}
-
-.hero span{
-  color:#38bdf8;
-}
-
-.hero p{
-  font-size:20px;
-  color:#cbd5e1;
-}
-
-section{
-  padding:80px 8%;
-}
-
-.section-title{
-  text-align:center;
-  font-size:40px;
-  margin-bottom:50px;
-}
-
-.games-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:30px;
-}
-
-.game-card{
-  background:#111827;
-  border-radius:16px;
-  overflow:hidden;
-  border:1px solid #1f2937;
-  transition:0.3s;
-}
-
-.game-card:hover{
-  transform:translateY(-5px);
-}
-
-.game-card img{
-  width:100%;
-  height:200px;
-  object-fit:cover;
-}
-
-.game-content{
-  padding:20px;
-}
-
-.game-content h3{
-  margin-bottom:10px;
-}
-
-.game-content p{
-  color:#cbd5e1;
-  margin-bottom:20px;
-}
-
-.play-btn{
-  width:100%;
-  padding:14px;
-  border:none;
-  border-radius:8px;
-  background:#22c55e;
-  color:white;
-  cursor:pointer;
-  font-size:16px;
-  font-weight:600;
-}
-
-.play-btn:hover{
-  background:#16a34a;
-}
-
-/* LEADERBOARD */
-
-table{
-  width:100%;
-  border-collapse:collapse;
-}
-
-th{
-  background:#38bdf8;
-  color:black;
-  padding:15px;
-}
-
-td{
-  padding:15px;
-  background:#111827;
-  border-bottom:1px solid #1f2937;
-}
-
-/* MODAL */
-
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.85);
-  display:none;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-}
-
-.modal-box{
-  background:#111827;
-  padding:30px;
-  border-radius:15px;
-  width:90%;
-  max-width:400px;
-}
-
-.modal-box h2{
-  margin-bottom:20px;
-}
-
-.modal-box input{
-  width:100%;
-  padding:14px;
-  margin-bottom:15px;
-  border:none;
-  border-radius:8px;
-  background:#1f2937;
-  color:white;
-}
-
-.modal-box button{
-  width:100%;
-  padding:14px;
-  border:none;
-  border-radius:8px;
-  background:#38bdf8;
-  color:black;
-  cursor:pointer;
-  font-weight:600;
-}
-
-/* GAME MODAL */
-
-#gameModal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.9);
-  display:none;
-  justify-content:center;
-  align-items:center;
-  z-index:10000;
-}
-
-.game-window{
-  background:#111827;
-  width:95%;
-  max-width:900px;
-  border-radius:15px;
-  padding:20px;
-  position:relative;
-}
-
-.close-btn{
-  position:absolute;
-  right:20px;
-  top:10px;
-  font-size:30px;
-  cursor:pointer;
-}
-
-.game-header{
-  display:flex;
-  justify-content:space-between;
-  margin-bottom:20px;
-}
-
-#score{
-  color:#38bdf8;
-  font-size:22px;
-  font-weight:bold;
-}
-
-#gameArea{
-  width:100%;
-  height:500px;
-  background:#1f2937;
-  border-radius:12px;
-  position:relative;
-  overflow:hidden;
-}
-
-/* TARGET GAME */
-
-#target{
-  width:70px;
-  height:70px;
-  background:#22c55e;
-  border-radius:50%;
-  position:absolute;
-  display:none;
-  cursor:pointer;
-}
-
-/* MEMORY GAME */
-
-.memory-grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-}
-
-.memory-card{
-  height:100px;
-  background:#38bdf8;
-  border-radius:10px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:40px;
-  cursor:pointer;
-  color:transparent;
-}
-
-.memory-card.show{
-  background:#22c55e;
-  color:white;
-}
-
-footer{
-  background:#020617;
-  text-align:center;
-  padding:25px;
-  color:#94a3b8;
-}
-
-@media(max-width:768px){
-
-  .hero h1{
-    font-size:40px;
-  }
-
-  #gameArea{
-    height:400px;
-  }
-
-}
-
-</style>
 </head>
+
 <body>
 
 <!-- NAVBAR -->
 
 <nav>
 
-  <div class="logo">🎮 NovaPlay</div>
+  <div class="logo">
+    🎮 NovaPlay
+  </div>
 
   <div class="nav-right">
 
@@ -358,7 +68,7 @@ footer{
     </h1>
 
     <p>
-      Login, play games, save high scores and dominate the leaderboard.
+      Play real browser games with leaderboards and saved scores.
     </p>
 
   </div>
@@ -370,12 +80,12 @@ footer{
 <section>
 
   <h2 class="section-title">
-    🔥 Play Games
+    🔥 Games
   </h2>
 
   <div class="games-grid">
 
-    <!-- GAME 1 -->
+    <!-- TARGET -->
 
     <div class="game-card">
 
@@ -386,7 +96,7 @@ footer{
         <h3>🎯 Target Hunter</h3>
 
         <p>
-          Click moving targets and score points.
+          Click moving targets before time runs out.
         </p>
 
         <button class="play-btn" onclick="startTargetGame()">
@@ -397,7 +107,29 @@ footer{
 
     </div>
 
-    <!-- GAME 2 -->
+    <!-- SPEED CLICKER -->
+
+    <div class="game-card">
+
+      <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=2070&auto=format&fit=crop">
+
+      <div class="game-content">
+
+        <h3>⚡ Speed Clicker</h3>
+
+        <p>
+          Click rapidly in 10 seconds.
+        </p>
+
+        <button class="play-btn" onclick="startSpeedClicker()">
+          Play Now
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- MEMORY -->
 
     <div class="game-card">
 
@@ -408,7 +140,7 @@ footer{
         <h3>🧠 Memory Match</h3>
 
         <p>
-          Match all hidden cards to win.
+          Match all hidden emoji cards.
         </p>
 
         <button class="play-btn" onclick="startMemoryGame()">
@@ -416,431 +148,72 @@ footer{
         </button>
 
       </div>
-      <!-- ========================================= -->
-<!-- ADD THIS INSIDE .games-grid -->
-<!-- ========================================= -->
-
-<!-- GAME 3 -->
-
-<div class="game-card">
-
-  <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=2070&auto=format&fit=crop">
-
-  <div class="game-content">
-
-    <h3>⚡ Speed Clicker</h3>
-
-    <p>
-      Click as fast as possible in 10 seconds.
-    </p>
-
-    <button class="play-btn" onclick="startSpeedClicker()">
-      Play Now
-    </button>
-
-  </div>
-
-</div>
-
-<!-- GAME 4 -->
-
-<div class="game-card">
-
-  <img src="https://images.unsplash.com/photo-1511882150382-421056c89033?q=80&w=2070&auto=format&fit=crop">
-
-  <div class="game-content">
-
-    <h3>🧱 Brick Breaker</h3>
-
-    <p>
-      Destroy blocks and score points.
-    </p>
-
-    <button class="play-btn" onclick="startBrickBreaker()">
-      Play Now
-    </button>
-
-  </div>
-
-</div>
-
-<!-- GAME 5 -->
-
-<div class="game-card">
-
-  <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop">
-
-  <div class="game-content">
-
-    <h3>🐍 Snake Game</h3>
-
-    <p>
-      Eat food and grow your snake.
-    </p>
-
-    <button class="play-btn" onclick="startSnakeGame()">
-      Play Now
-    </button>
-
-  </div>
-
-</div>
-
-<!-- GAME 6 -->
-
-<div class="game-card">
-
-  <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop">
-
-  <div class="game-content">
-
-    <h3>🚀 Space Shooter</h3>
-
-    <p>
-      Shoot enemy ships and survive.
-    </p>
-
-    <button class="play-btn" onclick="startSpaceShooter()">
-      Play Now
-    </button>
-
-  </div>
-
-</div>
-
-<!-- GAME 7 -->
-
-<div class="game-card">
-
-  <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?q=80&w=2070&auto=format&fit=crop">
-
-  <div class="game-content">
-
-    <h3>🏃 Endless Runner</h3>
-
-    <p>
-      Jump obstacles and survive.
-    </p>
-
-    <button class="play-btn" onclick="startRunnerGame()">
-      Play Now
-    </button>
-
-  </div>
-
-</div>
-
-<!-- GAME 8 -->
-
-<div class="game-card">
-
-  <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=2070&auto=format&fit=crop">
-
-  <div class="game-content">
-
-    <h3>🎲 Dice Roller</h3>
-
-    <p>
-      Roll lucky dice and earn points.
-    </p>
-
-    <button class="play-btn" onclick="startDiceGame()">
-      Play Now
-    </button>
-
-  </div>
-
-</div>
-
-<!-- GAME 9 -->
-
-<div class="game-card">
-
-  <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2070&auto=format&fit=crop">
-
-  <div class="game-content">
-
-    <h3>🧩 Puzzle Slide</h3>
-
-    <p>
-      Arrange tiles in the correct order.
-    </p>
-
-    <button class="play-btn" onclick="startPuzzleGame()">
-      Play Now
-    </button>
-
-  </div>
-
-</div>
-
-<!-- GAME 10 -->
-
-<div class="game-card">
-
-  <img src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?q=80&w=2070&auto=format&fit=crop">
-
-  <div class="game-content">
-
-    <h3>🎯 Aim Trainer</h3>
-
-    <p>
-      Improve reaction speed and aim.
-    </p>
-
-    <button class="play-btn" onclick="startAimTrainer()">
-      Play Now
-    </button>
-
-  </div>
-
-</div>
-
-<!-- GAME 11 -->
-
-<div class="game-card">
-
-  <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop">
-
-  <div class="game-content">
-
-    <h3>💣 Bomb Escape</h3>
-
-    <p>
-      Avoid bombs and stay alive.
-    </p>
-
-    <button class="play-btn" onclick="startBombEscape()">
-      Play Now
-    </button>
-
-  </div>
-
-</div>
-
-<!-- GAME 12 -->
-
-<div class="game-card">
-
-  <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=2070&auto=format&fit=crop">
-
-  <div class="game-content">
-
-    <h3>🎨 Color Match</h3>
-
-    <p>
-      Match colors before time runs out.
-    </p>
-
-    <button class="play-btn" onclick="startColorMatch()">
-      Play Now
-    </button>
-
-  </div>
-
-</div>
-
-<!-- GAME 13 -->
-
-<div class="game-card">
-
-  <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2070&auto=format&fit=crop">
-
-  <div class="game-content">
-
-    <h3>🏓 Pong Classic</h3>
-
-    <p>
-      Retro pong arcade experience.
-    </p>
-
-    <button class="play-btn" onclick="startPongGame()">
-      Play Now
-    </button>
-
-  </div>
-
-</div>
-
-<!-- GAME 14 -->
-
-<div class="game-card">
-
-  <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=2070&auto=format&fit=crop">
-
-  <div class="game-content">
-
-    <h3>🃏 Card Flip</h3>
-
-    <p>
-      Flip cards and find hidden rewards.
-    </p>
-
-    <button class="play-btn" onclick="startCardFlip()">
-      Play Now
-    </button>
-
-  </div>
-
-</div>
-
-<!-- ========================================= -->
-<!-- ADD THIS SCRIPT BEFORE </script> -->
-<!-- ========================================= -->
-
-<script>
-
-/* ========================================= */
-/* SIMPLE GAME FUNCTIONS */
-/* ========================================= */
-
-function simpleGame(title){
-
-  gameModal.style.display = "flex";
-
-  gameTitle.innerHTML = title;
-
-  score = 0;
-
-  scoreText.innerHTML = "Score: 0";
-
-  gameArea.innerHTML = `
-
-    <div style="
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      flex-direction:column;
-      height:100%;
-      gap:20px;
-    ">
-
-      <h1 style="font-size:60px;">
-        🎮
-      </h1>
-
-      <button id="tapBtn" style="
-        padding:20px 40px;
-        border:none;
-        border-radius:10px;
-        background:#22c55e;
-        color:white;
-        font-size:20px;
-        cursor:pointer;
-      ">
-        TAP FAST
-      </button>
-
-      <p>
-        Click repeatedly to increase score
-      </p>
 
     </div>
 
-  `;
+    <!-- SNAKE -->
 
-  const tapBtn =
-  document.getElementById("tapBtn");
+    <div class="game-card">
 
-  tapBtn.onclick = () => {
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2072&auto=format&fit=crop">
 
-    score++;
+      <div class="game-content">
 
-    scoreText.innerHTML =
-    "Score: " + score;
+        <h3>🐍 Snake Game</h3>
 
-  };
+        <p>
+          Eat food and survive.
+        </p>
 
-  setTimeout(() => {
+        <button class="play-btn" onclick="startSnakeGame()">
+          Play Now
+        </button>
 
-    alert(
-      "🎮 Game Over!\\nScore: "
-      + score
-    );
+      </div>
 
-    saveScore(score);
+    </div>
 
-  },10000);
+    <!-- PONG -->
 
-}
+    <div class="game-card">
 
-/* ========================================= */
-/* GAME FUNCTIONS */
-/* ========================================= */
+      <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=2070&auto=format&fit=crop">
 
-function startSpeedClicker(){
+      <div class="game-content">
 
-  simpleGame("⚡ Speed Clicker");
+        <h3>🏓 Pong</h3>
 
-}
+        <p>
+          Classic pong arcade game.
+        </p>
 
-function startBrickBreaker(){
+        <button class="play-btn" onclick="startPongGame()">
+          Play Now
+        </button>
 
-  simpleGame("🧱 Brick Breaker");
+      </div>
 
-}
+    </div>
 
-function startSnakeGame(){
+    <!-- SPACE -->
 
-  simpleGame("🐍 Snake Game");
+    <div class="game-card">
 
-}
+      <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop">
 
-function startSpaceShooter(){
+      <div class="game-content">
 
-  simpleGame("🚀 Space Shooter");
+        <h3>🚀 Space Shooter</h3>
 
-}
+        <p>
+          Dodge enemies and survive.
+        </p>
 
-function startRunnerGame(){
+        <button class="play-btn" onclick="startSpaceShooter()">
+          Play Now
+        </button>
 
-  simpleGame("🏃 Endless Runner");
-
-}
-
-function startDiceGame(){
-
-  simpleGame("🎲 Dice Roller");
-
-}
-
-function startPuzzleGame(){
-
-  simpleGame("🧩 Puzzle Slide");
-
-}
-
-function startAimTrainer(){
-
-  simpleGame("🎯 Aim Trainer");
-
-}
-
-function startBombEscape(){
-
-  simpleGame("💣 Bomb Escape");
-
-}
-
-function startColorMatch(){
-
-  simpleGame("🎨 Color Match");
-
-}
-
-function startPongGame(){
-
-  simpleGame("🏓 Pong Classic");
-
-}
-
-function startCardFlip(){
-
-  simpleGame("🃏 Card Flip");
-
-}
-
-</script>
+      </div>
 
     </div>
 
@@ -861,9 +234,11 @@ function startCardFlip(){
     <thead>
 
       <tr>
+
         <th>Rank</th>
         <th>Player</th>
-        <th>High Score</th>
+        <th>Score</th>
+
       </tr>
 
     </thead>
@@ -887,7 +262,7 @@ function startCardFlip(){
     <input
       type="text"
       id="usernameInput"
-      placeholder="Enter username"
+      placeholder="Enter Username"
     >
 
     <button onclick="loginUser()">
@@ -904,10 +279,7 @@ function startCardFlip(){
 
   <div class="game-window">
 
-    <div
-      class="close-btn"
-      onclick="closeGame()"
-    >
+    <div class="close-btn" onclick="closeGame()">
       ✖
     </div>
 
@@ -932,363 +304,12 @@ function startCardFlip(){
 </div>
 
 <footer>
+
   © 2026 NovaPlay Arcade
+
 </footer>
 
-<script>
-
-/* ===================================== */
-/* USER LOGIN SYSTEM */
-/* ===================================== */
-
-let currentUser =
-localStorage.getItem("novaplayUser") || "Guest";
-
-document.getElementById("userDisplay")
-.innerHTML = currentUser;
-
-function openLogin(){
-
-  document.getElementById("loginModal")
-  .style.display = "flex";
-
-}
-
-function loginUser(){
-
-  const username =
-  document.getElementById("usernameInput")
-  .value.trim();
-
-  if(username === ""){
-
-    alert("Enter username");
-
-    return;
-
-  }
-
-  currentUser = username;
-
-  localStorage.setItem(
-    "novaplayUser",
-    username
-  );
-
-  document.getElementById("userDisplay")
-  .innerHTML = username;
-
-  document.getElementById("loginModal")
-  .style.display = "none";
-
-}
-
-/* ===================================== */
-/* LEADERBOARD */
-/* ===================================== */
-
-let leaderboard =
-JSON.parse(
-localStorage.getItem("novaplayLeaderboard")
-) || [];
-
-function updateLeaderboard(){
-
-  leaderboard.sort((a,b) =>
-  b.score - a.score);
-
-  const body =
-  document.getElementById("leaderboardBody");
-
-  body.innerHTML = "";
-
-  leaderboard.slice(0,10)
-  .forEach((player,index) => {
-
-    body.innerHTML += `
-
-      <tr>
-
-        <td>#${index + 1}</td>
-
-        <td>${player.name}</td>
-
-        <td>${player.score}</td>
-
-      </tr>
-
-    `;
-
-  });
-
-}
-
-updateLeaderboard();
-
-/* ===================================== */
-/* SAVE SCORE */
-/* ===================================== */
-
-function saveScore(score){
-
-  if(currentUser === "Guest") return;
-
-  const existing =
-  leaderboard.find(player =>
-  player.name === currentUser
-  );
-
-  if(existing){
-
-    if(score > existing.score){
-
-      existing.score = score;
-
-    }
-
-  } else {
-
-    leaderboard.push({
-
-      name: currentUser,
-      score: score
-
-    });
-
-  }
-
-  localStorage.setItem(
-    "novaplayLeaderboard",
-    JSON.stringify(leaderboard)
-  );
-
-  updateLeaderboard();
-
-}
-
-/* ===================================== */
-/* GAME SYSTEM */
-/* ===================================== */
-
-const gameModal =
-document.getElementById("gameModal");
-
-const gameArea =
-document.getElementById("gameArea");
-
-const scoreText =
-document.getElementById("score");
-
-const gameTitle =
-document.getElementById("gameTitle");
-
-let score = 0;
-let gameInterval;
-
-/* ===================================== */
-/* CLOSE GAME */
-/* ===================================== */
-
-function closeGame(){
-
-  gameModal.style.display = "none";
-
-  clearInterval(gameInterval);
-
-}
-
-/* ===================================== */
-/* TARGET GAME */
-/* ===================================== */
-
-function startTargetGame(){
-
-  gameModal.style.display = "flex";
-
-  gameTitle.innerHTML =
-  "🎯 Target Hunter";
-
-  score = 0;
-
-  scoreText.innerHTML =
-  "Score: 0";
-
-  gameArea.innerHTML =
-  `<div id="target"></div>`;
-
-  const target =
-  document.getElementById("target");
-
-  target.style.display = "block";
-
-  function moveTarget(){
-
-    const x =
-    Math.random() *
-    (gameArea.clientWidth - 70);
-
-    const y =
-    Math.random() *
-    (gameArea.clientHeight - 70);
-
-    target.style.left = x + "px";
-    target.style.top = y + "px";
-
-  }
-
-  moveTarget();
-
-  target.onclick = () => {
-
-    score++;
-
-    scoreText.innerHTML =
-    "Score: " + score;
-
-    moveTarget();
-
-  };
-
-  gameInterval =
-  setInterval(moveTarget,700);
-
-  setTimeout(() => {
-
-    clearInterval(gameInterval);
-
-    alert(
-      "🎮 Game Over!\\nScore: "
-      + score
-    );
-
-    saveScore(score);
-
-  },30000);
-
-}
-
-/* ===================================== */
-/* MEMORY GAME */
-/* ===================================== */
-
-function startMemoryGame(){
-
-  gameModal.style.display = "flex";
-
-  gameTitle.innerHTML =
-  "🧠 Memory Match";
-
-  score = 0;
-
-  scoreText.innerHTML =
-  "Matches: 0";
-
-  const emojis = [
-
-    "🔥","🔥",
-    "🎮","🎮",
-    "⚡","⚡",
-    "🚀","🚀",
-    "🏆","🏆",
-    "💎","💎",
-    "👾","👾",
-    "🧠","🧠"
-
-  ];
-
-  emojis.sort(() =>
-  Math.random() - 0.5);
-
-  gameArea.innerHTML =
-  `<div class="memory-grid"></div>`;
-
-  const grid =
-  document.querySelector(".memory-grid");
-
-  let firstCard = null;
-  let secondCard = null;
-  let lock = false;
-
-  emojis.forEach(emoji => {
-
-    const card =
-    document.createElement("div");
-
-    card.classList.add("memory-card");
-
-    card.innerHTML = emoji;
-
-    grid.appendChild(card);
-
-    card.onclick = () => {
-
-      if(lock) return;
-
-      if(card === firstCard) return;
-
-      card.classList.add("show");
-
-      if(!firstCard){
-
-        firstCard = card;
-
-        return;
-
-      }
-
-      secondCard = card;
-
-      if(
-
-        firstCard.innerHTML ===
-        secondCard.innerHTML
-
-      ){
-
-        score++;
-
-        scoreText.innerHTML =
-        "Matches: " + score;
-
-        firstCard = null;
-        secondCard = null;
-
-        if(score === 8){
-
-          alert(
-            "🏆 You Win!"
-          );
-
-          saveScore(100);
-
-        }
-
-      } else {
-
-        lock = true;
-
-        setTimeout(() => {
-
-          firstCard.classList.remove("show");
-
-          secondCard.classList.remove("show");
-
-          firstCard = null;
-          secondCard = null;
-
-          lock = false;
-
-        },700);
-
-      }
-
-    };
-
-  });
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
