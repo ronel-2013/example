@@ -1,437 +1,360 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>NovaPlay Gaming Platform</title>
+<title>NovaPlay Arcade</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
+<style>
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    body{
-      font-family:'Poppins',sans-serif;
-      background:#0b1020;
-      color:white;
-    }
+body{
+  font-family:'Poppins',sans-serif;
+  background:#0b1020;
+  color:white;
+}
 
-    html{
-      scroll-behavior:smooth;
-    }
+nav{
+  background:#111827;
+  padding:20px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
 
-    nav{
-      width:100%;
-      padding:20px 8%;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      background:#111827;
-      position:sticky;
-      top:0;
-      z-index:1000;
-    }
+.logo{
+  font-size:28px;
+  font-weight:700;
+  color:#38bdf8;
+}
 
-    .logo{
-      font-size:28px;
-      font-weight:700;
-      color:#38bdf8;
-    }
+.hero{
+  min-height:70vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px;
+  background:
+  linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+  url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop');
+  background-size:cover;
+  background-position:center;
+}
 
-    .nav-links{
-      display:flex;
-      gap:20px;
-    }
+.hero h1{
+  font-size:60px;
+  margin-bottom:20px;
+}
 
-    .nav-links a{
-      color:white;
-      text-decoration:none;
-    }
+.hero span{
+  color:#38bdf8;
+}
 
-    .hero{
-      min-height:85vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding:40px;
-      background:
-      linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
-      url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop');
-      background-size:cover;
-      background-position:center;
-    }
+.hero p{
+  color:#cbd5e1;
+  font-size:20px;
+}
 
-    .hero-content{
-      max-width:800px;
-    }
+section{
+  padding:80px 8%;
+}
 
-    .hero h1{
-      font-size:65px;
-      margin-bottom:20px;
-    }
+.section-title{
+  text-align:center;
+  margin-bottom:50px;
+  font-size:40px;
+}
 
-    .hero span{
-      color:#38bdf8;
-    }
+.games-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
 
-    .hero p{
-      color:#d1d5db;
-      font-size:20px;
-      margin-bottom:30px;
-    }
+.game-card{
+  background:#111827;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid #1f2937;
+  transition:0.3s;
+}
 
-    .btn{
-      padding:14px 28px;
-      border:none;
-      border-radius:10px;
-      background:#38bdf8;
-      color:black;
-      font-size:17px;
-      font-weight:600;
-      cursor:pointer;
-    }
+.game-card:hover{
+  transform:translateY(-5px);
+}
 
-    section{
-      padding:80px 8%;
-    }
+.game-card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+}
 
-    .section-title{
-      text-align:center;
-      font-size:40px;
-      margin-bottom:50px;
-    }
+.game-content{
+  padding:20px;
+}
 
-    .games-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:30px;
-    }
+.game-content h3{
+  margin-bottom:10px;
+}
 
-    .game-card{
-      background:#111827;
-      border-radius:18px;
-      overflow:hidden;
-      transition:0.3s;
-      border:1px solid #1f2937;
-    }
+.game-content p{
+  color:#cbd5e1;
+  margin-bottom:20px;
+}
 
-    .game-card:hover{
-      transform:translateY(-5px);
-    }
+.play-btn{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:8px;
+  background:#22c55e;
+  color:white;
+  cursor:pointer;
+  font-size:16px;
+  font-weight:600;
+}
 
-    .game-card img{
-      width:100%;
-      height:220px;
-      object-fit:cover;
-    }
+.play-btn:hover{
+  background:#16a34a;
+}
 
-    .game-content{
-      padding:20px;
-    }
+/* GAME MODAL */
 
-    .game-content h3{
-      margin-bottom:10px;
-    }
+#gameModal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.9);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  padding:20px;
+}
 
-    .game-content p{
-      color:#cbd5e1;
-      margin-bottom:20px;
-    }
+.game-window{
+  background:#111827;
+  width:100%;
+  max-width:900px;
+  border-radius:15px;
+  padding:20px;
+  position:relative;
+}
 
-    .play-btn{
-      width:100%;
-      padding:13px;
-      border:none;
-      border-radius:8px;
-      background:#22c55e;
-      color:white;
-      font-size:16px;
-      cursor:pointer;
-      font-weight:600;
-    }
+.close-btn{
+  position:absolute;
+  right:20px;
+  top:10px;
+  font-size:28px;
+  cursor:pointer;
+}
 
-    .play-btn:hover{
-      background:#16a34a;
-    }
+.game-header{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:20px;
+}
 
-    /* GAME WINDOW */
+#score{
+  color:#38bdf8;
+  font-size:22px;
+  font-weight:bold;
+}
 
-    #gameModal{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,0.85);
-      display:none;
-      justify-content:center;
-      align-items:center;
-      z-index:5000;
-      padding:20px;
-    }
+#gameArea{
+  width:100%;
+  height:500px;
+  background:#1f2937;
+  border-radius:12px;
+  position:relative;
+  overflow:hidden;
+}
 
-    .game-box{
-      background:#111827;
-      width:100%;
-      max-width:900px;
-      border-radius:15px;
-      padding:20px;
-      position:relative;
-    }
+/* TARGET GAME */
 
-    .close-btn{
-      position:absolute;
-      right:15px;
-      top:10px;
-      font-size:28px;
-      cursor:pointer;
-    }
+#target{
+  position:absolute;
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  background:#22c55e;
+  display:none;
+  cursor:pointer;
+}
 
-    .game-header{
-      display:flex;
-      justify-content:space-between;
-      margin-bottom:20px;
-      align-items:center;
-    }
+/* DODGE GAME */
 
-    #score{
-      font-size:22px;
-      color:#38bdf8;
-      font-weight:bold;
-    }
+#player{
+  position:absolute;
+  width:80px;
+  height:20px;
+  background:#38bdf8;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  display:none;
+}
 
-    #gameArea{
-      position:relative;
-      width:100%;
-      height:500px;
-      background:#1f2937;
-      border-radius:12px;
-      overflow:hidden;
-    }
+.enemy{
+  position:absolute;
+  width:40px;
+  height:40px;
+  background:red;
+  top:-50px;
+}
 
-    #target{
-      position:absolute;
-      width:70px;
-      height:70px;
-      background:#22c55e;
-      border-radius:50%;
-      cursor:pointer;
-      display:none;
-      box-shadow:0 0 20px #22c55e;
-    }
+/* MEMORY GAME */
 
-    footer{
-      background:#020617;
-      text-align:center;
-      padding:25px;
-      color:#94a3b8;
-    }
+.memory-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
 
-    @media(max-width:768px){
+.memory-card{
+  background:#38bdf8;
+  height:100px;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:40px;
+  cursor:pointer;
+  color:transparent;
+  user-select:none;
+}
 
-      .hero h1{
-        font-size:42px;
-      }
+.memory-card.show{
+  color:white;
+  background:#22c55e;
+}
 
-      .nav-links{
-        display:none;
-      }
+footer{
+  background:#020617;
+  text-align:center;
+  padding:25px;
+  color:#94a3b8;
+}
 
-      #gameArea{
-        height:400px;
-      }
-    }
+@media(max-width:768px){
 
-  </style>
+  .hero h1{
+    font-size:42px;
+  }
+
+  #gameArea{
+    height:400px;
+  }
+
+}
+
+</style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
+<nav>
 
-  <nav>
+  <div class="logo">🎮 NovaPlay</div>
 
-    <div class="logo">🎮 NovaPlay</div>
+</nav>
 
-    <div class="nav-links">
-      <a href="#games">Games</a>
-      <a href="#leaderboard">Leaderboard</a>
-    </div>
+<section class="hero">
 
-  </nav>
+  <div>
 
-  <!-- HERO -->
+    <h1>
+      Ultimate <span>Browser Arcade</span>
+    </h1>
 
-  <section class="hero">
+    <p>
+      Multiple playable games directly in your browser
+    </p>
 
-    <div class="hero-content">
+  </div>
 
-      <h1>
-        Play <span>Real Browser Games</span>
-      </h1>
+</section>
 
-      <p>
-        Instant gaming directly in your browser.
-        No download required.
-      </p>
+<section>
 
-      <button class="btn" onclick="scrollToGames()">
-        Start Playing
-      </button>
+  <h2 class="section-title">
+    🔥 Play Games
+  </h2>
 
-    </div>
+  <div class="games-grid">
 
-  </section>
+    <!-- TARGET HUNTER -->
 
-  <!-- GAMES -->
+    <div class="game-card">
 
-  <section id="games">
+      <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071&auto=format&fit=crop">
 
-    <h2 class="section-title">
-      🔥 Play Games
-    </h2>
+      <div class="game-content">
 
-    <div class="games-grid">
+        <h3>🎯 Target Hunter</h3>
 
-      <!-- GAME 1 -->
+        <p>
+          Click the moving targets before time runs out.
+        </p>
 
-      <div class="game-card">
-
-        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071&auto=format&fit=crop">
-
-        <div class="game-content">
-
-          <h3>Target Hunter</h3>
-
-          <p>
-            Click targets before time runs out.
-          </p>
-
-          <button class="play-btn" onclick="startGame()">
-            Play Now
-          </button>
-
-        </div>
-
-      </div>
-
-      <!-- GAME 2 -->
-
-      <div class="game-card">
-
-        <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=2070&auto=format&fit=crop">
-
-        <div class="game-content">
-
-          <h3>Speed Clicker</h3>
-
-          <p>
-            Test your reaction speed and reflexes.
-          </p>
-
-          <button class="play-btn" onclick="startGame()">
-            Play Now
-          </button>
-
-        </div>
-
-      </div>
-
-      <!-- GAME 3 -->
-
-      <div class="game-card">
-
-        <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=2070&auto=format&fit=crop">
-
-        <div class="game-content">
-
-          <h3>Arcade Challenge</h3>
-
-          <p>
-            Score as many points as possible.
-          </p>
-
-          <button class="play-btn" onclick="startGame()">
-            Play Now
-          </button>
-
-        </div>
+        <button class="play-btn" onclick="openTargetGame()">
+          Play Now
+        </button>
 
       </div>
 
     </div>
 
-  </section>
+    <!-- DODGE BLOCK -->
 
-  <!-- LEADERBOARD -->
+    <div class="game-card">
 
-  <section id="leaderboard">
+      <img src="https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=2070&auto=format&fit=crop">
 
-    <h2 class="section-title">
-      🏆 Leaderboard
-    </h2>
+      <div class="game-content">
 
-    <div style="max-width:700px; margin:auto;">
+        <h3>🛡 Dodge Blocks</h3>
 
-      <table style="width:100%; border-collapse:collapse;">
+        <p>
+          Avoid falling enemies and survive as long as possible.
+        </p>
 
-        <tr style="background:#38bdf8; color:black;">
-          <th style="padding:15px;">Rank</th>
-          <th>Player</th>
-          <th>Score</th>
-        </tr>
+        <button class="play-btn" onclick="openDodgeGame()">
+          Play Now
+        </button>
 
-        <tr style="background:#111827;">
-          <td style="padding:15px;">#1</td>
-          <td>ShadowX</td>
-          <td>15200</td>
-        </tr>
-
-        <tr style="background:#1f2937;">
-          <td style="padding:15px;">#2</td>
-          <td>NovaKing</td>
-          <td>14800</td>
-        </tr>
-
-        <tr style="background:#111827;">
-          <td style="padding:15px;">#3</td>
-          <td>CyberAce</td>
-          <td>13900</td>
-        </tr>
-
-      </table>
+      </div>
 
     </div>
 
-  </section>
+    <!-- MEMORY GAME -->
 
-  <!-- GAME MODAL -->
+    <div class="game-card">
 
-  <div id="gameModal">
+      <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?q=80&w=2070&auto=format&fit=crop">
 
-    <div class="game-box">
+      <div class="game-content">
 
-      <div class="close-btn" onclick="closeGame()">
-        ✖
-      </div>
+        <h3>🧠 Memory Match</h3>
 
-      <div class="game-header">
+        <p>
+          Match all the hidden emoji cards.
+        </p>
 
-        <h2>🎯 Target Hunter</h2>
-
-        <div id="score">
-          Score: 0
-        </div>
-
-      </div>
-
-      <div id="gameArea">
-
-        <div id="target"></div>
+        <button class="play-btn" onclick="openMemoryGame()">
+          Play Now
+        </button>
 
       </div>
 
@@ -439,113 +362,355 @@
 
   </div>
 
-  <!-- FOOTER -->
+</section>
 
-  <footer>
-    © 2026 NovaPlay Gaming Platform
-  </footer>
+<!-- GAME MODAL -->
 
-  <!-- JAVASCRIPT -->
+<div id="gameModal">
 
-  <script>
+  <div class="game-window">
 
-    function scrollToGames(){
+    <div class="close-btn" onclick="closeGame()">
+      ✖
+    </div>
 
-      document.getElementById("games")
-      .scrollIntoView({behavior:"smooth"});
+    <div class="game-header">
+
+      <h2 id="gameTitle">
+        Game
+      </h2>
+
+      <div id="score">
+        Score: 0
+      </div>
+
+    </div>
+
+    <div id="gameArea">
+
+      <div id="target"></div>
+
+      <div id="player"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<footer>
+  © 2026 NovaPlay Arcade
+</footer>
+
+<script>
+
+/* GLOBAL */
+
+const modal = document.getElementById("gameModal");
+const gameArea = document.getElementById("gameArea");
+const scoreText = document.getElementById("score");
+const gameTitle = document.getElementById("gameTitle");
+
+let score = 0;
+let gameInterval;
+let enemyInterval;
+
+/* CLOSE GAME */
+
+function closeGame(){
+
+  modal.style.display = "none";
+
+  clearInterval(gameInterval);
+  clearInterval(enemyInterval);
+
+  gameArea.innerHTML = `
+    <div id="target"></div>
+    <div id="player"></div>
+  `;
+
+}
+
+/* ================================================= */
+/* TARGET GAME */
+/* ================================================= */
+
+function openTargetGame(){
+
+  modal.style.display = "flex";
+
+  gameTitle.innerHTML = "🎯 Target Hunter";
+
+  score = 0;
+
+  scoreText.innerHTML = "Score: 0";
+
+  gameArea.innerHTML = `
+    <div id="target"></div>
+  `;
+
+  const target = document.getElementById("target");
+
+  target.style.display = "block";
+
+  moveTarget();
+
+  function moveTarget(){
+
+    const x =
+    Math.random() *
+    (gameArea.clientWidth - 70);
+
+    const y =
+    Math.random() *
+    (gameArea.clientHeight - 70);
+
+    target.style.left = x + "px";
+    target.style.top = y + "px";
+
+  }
+
+  target.onclick = () => {
+
+    score++;
+
+    scoreText.innerHTML =
+    "Score: " + score;
+
+    moveTarget();
+
+  };
+
+  gameInterval = setInterval(moveTarget, 800);
+
+}
+
+/* ================================================= */
+/* DODGE GAME */
+/* ================================================= */
+
+function openDodgeGame(){
+
+  modal.style.display = "flex";
+
+  gameTitle.innerHTML = "🛡 Dodge Blocks";
+
+  score = 0;
+
+  scoreText.innerHTML = "Score: 0";
+
+  gameArea.innerHTML = `
+    <div id="player"></div>
+  `;
+
+  const player =
+  document.getElementById("player");
+
+  player.style.display = "block";
+
+  let playerX =
+  gameArea.clientWidth / 2;
+
+  document.onkeydown = (e) => {
+
+    if(e.key === "ArrowLeft"){
+
+      playerX -= 25;
 
     }
 
-    const gameModal = document.getElementById("gameModal");
-    const target = document.getElementById("target");
-    const gameArea = document.getElementById("gameArea");
-    const scoreText = document.getElementById("score");
+    if(e.key === "ArrowRight"){
 
-    let score = 0;
-    let gameRunning = false;
-    let moveInterval;
-
-    function startGame(){
-
-      gameModal.style.display = "flex";
-
-      score = 0;
-
-      scoreText.innerHTML = "Score: 0";
-
-      gameRunning = true;
-
-      target.style.display = "block";
-
-      moveTarget();
-
-      moveInterval = setInterval(moveTarget, 800);
-
-      setTimeout(() => {
-
-        endGame();
-
-      }, 30000);
+      playerX += 25;
 
     }
 
-    function moveTarget(){
+    if(playerX < 0) playerX = 0;
 
-      if(!gameRunning) return;
+    if(playerX >
+    gameArea.clientWidth - 80){
 
-      const maxX =
-      gameArea.clientWidth - target.clientWidth;
-
-      const maxY =
-      gameArea.clientHeight - target.clientHeight;
-
-      const x = Math.random() * maxX;
-
-      const y = Math.random() * maxY;
-
-      target.style.left = x + "px";
-
-      target.style.top = y + "px";
+      playerX =
+      gameArea.clientWidth - 80;
 
     }
 
-    target.addEventListener("click", () => {
+    player.style.left = playerX + "px";
 
-      if(!gameRunning) return;
+  };
+
+  enemyInterval = setInterval(() => {
+
+    const enemy =
+    document.createElement("div");
+
+    enemy.classList.add("enemy");
+
+    enemy.style.left =
+    Math.random() *
+    (gameArea.clientWidth - 40)
+    + "px";
+
+    gameArea.appendChild(enemy);
+
+    let enemyY = -50;
+
+    const fall = setInterval(() => {
+
+      enemyY += 5;
+
+      enemy.style.top = enemyY + "px";
 
       score++;
 
       scoreText.innerHTML =
       "Score: " + score;
 
-      moveTarget();
+      const playerRect =
+      player.getBoundingClientRect();
 
-    });
+      const enemyRect =
+      enemy.getBoundingClientRect();
 
-    function endGame(){
+      if(
 
-      gameRunning = false;
+        enemyRect.bottom >
+        playerRect.top &&
 
-      clearInterval(moveInterval);
+        enemyRect.left <
+        playerRect.right &&
 
-      alert(
-        "🎮 Game Over!\\n\\n" +
-        "Your Score: " + score
-      );
+        enemyRect.right >
+        playerRect.left
 
-    }
+      ){
 
-    function closeGame(){
+        alert(
+          "💥 Game Over!\\nScore: "
+          + score
+        );
 
-      gameRunning = false;
+        closeGame();
 
-      clearInterval(moveInterval);
+      }
 
-      gameModal.style.display = "none";
+      if(enemyY > 600){
 
-    }
+        enemy.remove();
 
-  </script>
+        clearInterval(fall);
+
+      }
+
+    },30);
+
+  },900);
+
+}
+
+/* ================================================= */
+/* MEMORY GAME */
+/* ================================================= */
+
+function openMemoryGame(){
+
+  modal.style.display = "flex";
+
+  gameTitle.innerHTML = "🧠 Memory Match";
+
+  score = 0;
+
+  scoreText.innerHTML = "Matches: 0";
+
+  const emojis = [
+    "🔥","🔥",
+    "🎮","🎮",
+    "⚡","⚡",
+    "🚀","🚀",
+    "👾","👾",
+    "💎","💎",
+    "🏆","🏆",
+    "🧠","🧠"
+  ];
+
+  emojis.sort(() => Math.random() - 0.5);
+
+  gameArea.innerHTML = `
+    <div class="memory-grid"></div>
+  `;
+
+  const grid =
+  document.querySelector(".memory-grid");
+
+  let firstCard = null;
+  let secondCard = null;
+  let lockBoard = false;
+
+  emojis.forEach(emoji => {
+
+    const card =
+    document.createElement("div");
+
+    card.classList.add("memory-card");
+
+    card.innerHTML = emoji;
+
+    grid.appendChild(card);
+
+    card.onclick = () => {
+
+      if(lockBoard) return;
+
+      if(card === firstCard) return;
+
+      card.classList.add("show");
+
+      if(!firstCard){
+
+        firstCard = card;
+
+        return;
+
+      }
+
+      secondCard = card;
+
+      if(firstCard.innerHTML === secondCard.innerHTML){
+
+        score++;
+
+        scoreText.innerHTML =
+        "Matches: " + score;
+
+        firstCard = null;
+        secondCard = null;
+
+      } else {
+
+        lockBoard = true;
+
+        setTimeout(() => {
+
+          firstCard.classList.remove("show");
+
+          secondCard.classList.remove("show");
+
+          firstCard = null;
+          secondCard = null;
+
+          lockBoard = false;
+
+        },700);
+
+      }
+
+    };
+
+  });
+
+}
+
+</script>
 
 </body>
 </html>
